@@ -7,9 +7,13 @@ vec = pg.math.Vector2
 class Player(pg.sprite.Sprite):
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
-        # !!! Placeholder: Replace with actual player image later !!!
-        self.image = pg.Surface((50, 40))
-        self.image.fill(GREEN)
+        # Draw player ship (triangle)
+        self.image = pg.Surface((30, 40)) # Smaller surface
+        self.image.fill(BLACK) # Fill with background color first
+        # Define points for the triangle (pointing up)
+        ship_points = [(15, 0), (0, 40), (30, 40)]
+        pg.draw.polygon(self.image, WHITE, ship_points)
+        self.image.set_colorkey(BLACK) # Make black transparent
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH / 2
         self.rect.bottom = HEIGHT - 10
